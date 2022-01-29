@@ -4,11 +4,7 @@ import App from "./App"
 import reportWebVitals from "./reportWebVitals"
 import "./styles/globals.css"
 
-import {
-	MantineProvider,
-	TypographyStylesProvider,
-	DEFAULT_THEME,
-} from "@mantine/core"
+import { MantineProvider, DEFAULT_THEME } from "@mantine/core"
 import { NotificationsProvider } from "@mantine/notifications"
 
 ReactDOM.render(

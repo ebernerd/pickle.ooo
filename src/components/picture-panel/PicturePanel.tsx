@@ -1,7 +1,5 @@
-import { Container, Grid, Paper, useMantineTheme } from "@mantine/core"
-import { useCallback, useState } from "react"
+import { Grid, Paper } from "@mantine/core"
 import { FunctionComponent } from "../../types/components"
-import { EPickleChipColor } from "../PickleChip"
 import { PicturePanelPixel } from "./PicturePanelPixel"
 import { chunk } from "lodash"
 

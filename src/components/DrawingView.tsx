@@ -7,7 +7,7 @@ import {
 	TextInput,
 } from "@mantine/core"
 import { FunctionComponent } from "../types/components"
-import { useCallback, useState } from "react"
+import { useState } from "react"
 import { PicturePanel } from "./picture-panel/PicturePanel"
 import { EPickleChipColor } from "./PickleChip"
 import { PictureData } from "../types/misc"

@@ -51,7 +51,7 @@ const LogoChip = (props: { color: EPickleChipColor; letter: string }) => {
 export const Logo = () => {
 	const { classes } = useStyles()
 	const pickleLetters = "PICKLE".split("")
-	const oooLetters = "OOO".split("")
+	//	const oooLetters = "OOO".split("")
 
 	return (
 		<div className={classes.logoWrapper}>
