@@ -40,7 +40,8 @@ export const DrawingView: FunctionComponent<DrawingFormProps> = (props) => {
 	const [pictureData, setPictureData] = useState<PictureData>(
 		Array(30).fill(EPickleChipColor.Gray)
 	)
-	const [wordle, setWorlde] = useState<string>("")
+	//	This value is to stay uppercase, as is the wordlist
+	const [wordle, setWordle] = useState<string>("")
 
 	return (
 		<Paper className={classes.drawingForm} shadow={theme.shadows.md}>
@@ -59,13 +60,13 @@ export const DrawingView: FunctionComponent<DrawingFormProps> = (props) => {
 			</Text>
 			<TextInput
 				value={wordle}
-				onChange={(e) => setWorlde(e.target.value)}
+				onChange={(e) => setWordle(e.target.value.toLocaleUpperCase())}
 				mb={15}
 			/>
 			<Button
 				disabled={wordle.length !== 5}
 				onClick={() => {
-					if (WORDLIST.includes(wordle.toLocaleLowerCase())) {
+					if (WORDLIST.includes(wordle)) {
 						props.onSubmit(pictureData, wordle)
 					} else {
 						notifications.showNotification({
