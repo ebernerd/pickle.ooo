@@ -31,12 +31,14 @@ export const Logo = () => {
 
 	return (
 		<div className={classes.logoWrapper}>
+			<Text mt={-5}>🥒</Text>
 			<Text
 				className={classes.logoTextWrapper}
 				weight={700}
 				color="green"
+				ml={5}
 			>
-				Pickle 🥒
+				PICKLE
 			</Text>
 			<div className={classes.logoChipWrapper}>
 				<LogoChips />

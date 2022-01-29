@@ -7,7 +7,6 @@ import {
 	Text,
 	useMantineTheme,
 } from "@mantine/core"
-import { useState } from "react"
 import { FiGlobe, FiTwitter } from "react-icons/fi"
 import { FunctionComponent } from "../types/components"
 import { LogoChips } from "./logo/LogoChips"
