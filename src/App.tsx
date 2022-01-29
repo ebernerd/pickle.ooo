@@ -1,10 +1,11 @@
-import { AppShell, createStyles } from "@mantine/core"
+import { AppShell, createStyles, useMantineTheme } from "@mantine/core"
 import { PageHeader, PAGE_HEADER_HEIGHT } from "./components/PageHeader"
 import { DrawingView } from "./components/DrawingView"
 import { EPickleChipColor } from "./components/PickleChip"
-import { pickBy, chunk } from "lodash"
+import { chunk, shuffle } from "lodash"
 import { useState } from "react"
 import { PictureData } from "./types/misc"
+import { ResultView } from "./components/ResultView"
 
 const ALL_5_CHAR_WORDS: string[] = (
 	require("an-array-of-english-words") as string[]
@@ -23,6 +24,7 @@ type ComputedPickleState = {
 
 function App() {
 	const { classes } = useStyles()
+	const theme = useMantineTheme()
 
 	//	When this state is `null`, the assumption is that the user hasn't put in the drawing/wordle word yet.
 	const [computedState, setComputedState] =
@@ -35,6 +37,7 @@ function App() {
 				body: {
 					height: `calc(100% - ${PAGE_HEADER_HEIGHT}px)`,
 					background: "#f2f2f2",
+					paddingTop: theme.spacing.md,
 				},
 				main: {
 					display: "flex",
@@ -45,10 +48,10 @@ function App() {
 			className={classes.shell}
 		>
 			{computedState !== null ? (
-				<>
-					{console.log({ computedState })}
-					<p>Something</p>
-				</>
+				<ResultView
+					{...computedState}
+					onReset={() => setComputedState(null)}
+				/>
 			) : (
 				<DrawingView
 					onSubmit={(pictureData, wordle) => {
@@ -100,8 +103,8 @@ function App() {
 							(regexStr, i) => {
 								console.log(`Processing row id ${i}...`)
 								const regexp = new RegExp(regexStr)
-								const word = ALL_5_CHAR_WORDS.find((str) =>
-									regexp.test(str)
+								const word = shuffle(ALL_5_CHAR_WORDS).find(
+									(str) => regexp.test(str)
 								)
 								if (!word) {
 									console.log(
