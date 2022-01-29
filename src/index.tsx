@@ -10,7 +10,7 @@ import { NotificationsProvider } from "@mantine/notifications"
 ReactDOM.render(
 	<React.StrictMode>
 		<MantineProvider theme={{ ...DEFAULT_THEME, fontFamily: "Inter" }}>
-			<NotificationsProvider>
+			<NotificationsProvider position="top-right">
 				<App />
 			</NotificationsProvider>
 		</MantineProvider>

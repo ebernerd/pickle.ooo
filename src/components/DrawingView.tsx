@@ -6,11 +6,13 @@ import {
 	Button,
 	TextInput,
 } from "@mantine/core"
+import { useNotifications } from "@mantine/notifications"
 import { FunctionComponent } from "../types/components"
 import { useState } from "react"
 import { PicturePanel } from "./picture-panel/PicturePanel"
 import { EPickleChipColor } from "./PickleChip"
 import { PictureData } from "../types/misc"
+import { WORDLIST } from "../words/wordlist"
 
 const useStyles = createStyles((theme) => ({
 	drawingForm: {
@@ -29,6 +31,7 @@ export type DrawingFormProps = {
 export const DrawingView: FunctionComponent<DrawingFormProps> = (props) => {
 	const { classes } = useStyles()
 	const theme = useMantineTheme()
+	const notifications = useNotifications()
 
 	/*	The array below represents the state of the user picture-entry panel.
 		It uses integers 0-2, defined by the `EPickleChipColor` enum. The array
@@ -38,6 +41,7 @@ export const DrawingView: FunctionComponent<DrawingFormProps> = (props) => {
 		Array(30).fill(EPickleChipColor.Gray)
 	)
 	const [wordle, setWorlde] = useState<string>("")
+
 	return (
 		<Paper className={classes.drawingForm} shadow={theme.shadows.md}>
 			<Text size="xl" weight={700}>
@@ -60,7 +64,19 @@ export const DrawingView: FunctionComponent<DrawingFormProps> = (props) => {
 			/>
 			<Button
 				disabled={wordle.length !== 5}
-				onClick={() => props.onSubmit(pictureData, wordle)}
+				onClick={() => {
+					if (WORDLIST.includes(wordle)) {
+						props.onSubmit(pictureData, wordle)
+					} else {
+						notifications.showNotification({
+							title: "❌ Word not found!",
+							message:
+								"That word isn't in the list of valid words. Please try again",
+							color: "red",
+							radius: "xs",
+						})
+					}
+				}}
 			>
 				Generate!
 			</Button>

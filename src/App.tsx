@@ -6,11 +6,7 @@ import { chunk, shuffle } from "lodash"
 import { useState } from "react"
 import { PictureData } from "./types/misc"
 import { ResultView } from "./components/ResultView"
-
-const ALL_5_CHAR_WORDS: string[] = (
-	require("an-array-of-english-words") as string[]
-).filter((str) => str.length === 5)
-
+import { WORDLIST } from "./words/wordlist"
 const useStyles = createStyles({
 	shell: {
 		height: "100%",
@@ -103,8 +99,8 @@ function App() {
 							(regexStr, i) => {
 								console.log(`Processing row id ${i}...`)
 								const regexp = new RegExp(regexStr)
-								const word = shuffle(ALL_5_CHAR_WORDS).find(
-									(str) => regexp.test(str)
+								const word = shuffle(WORDLIST).find((str) =>
+									regexp.test(str)
 								)
 								if (!word) {
 									console.log(
