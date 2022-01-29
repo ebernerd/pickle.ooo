@@ -65,7 +65,7 @@ export const DrawingView: FunctionComponent<DrawingFormProps> = (props) => {
 			<Button
 				disabled={wordle.length !== 5}
 				onClick={() => {
-					if (WORDLIST.includes(wordle)) {
+					if (WORDLIST.includes(wordle.toLocaleLowerCase())) {
 						props.onSubmit(pictureData, wordle)
 					} else {
 						notifications.showNotification({
