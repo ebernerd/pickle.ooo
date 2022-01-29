@@ -24,6 +24,13 @@ export const PageHeader = () => {
 					<div className={classes.buttons}>
 						<Button
 							leftIcon={<FiGithub style={{ marginTop: 2 }} />}
+							onClick={() =>
+								window.open(
+									"https://github.com/ebernerd/pickle.ooo",
+									"_blank",
+									"noreferrer noopener"
+								)
+							}
 						>
 							View on Github
 						</Button>
