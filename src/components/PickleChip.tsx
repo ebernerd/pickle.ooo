@@ -21,7 +21,7 @@ export type PickleChipProps = {
 const useStyles = createStyles((theme, props: PickleChipProps) => {
 	const { color } = props
 
-	const PICKLE_CHIP_WIDTH = 50
+	const PICKLE_CHIP_WIDTH = 40
 
 	const mantineColorName = PICKLE_CHIP_ENUM_TO_COLOR[color]
 

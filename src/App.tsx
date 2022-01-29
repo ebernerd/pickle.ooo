@@ -79,13 +79,13 @@ function App() {
 											//	actually at this location
 											return (
 												workingStr +
-												`([^${testChar}]|(${wordle
+												`(${wordle
 													.split("")
 													.filter(
 														(char) =>
 															char !== testChar
 													)
-													.join("|")}))`
+													.join("|")}){1}`
 											)
 										}
 									}
@@ -97,7 +97,9 @@ function App() {
 						//	Look to find a match for each row
 						const foundWords: string[] = regexStrs.map(
 							(regexStr, i) => {
-								console.log(`Processing row id ${i}...`)
+								console.log(
+									`Processing row id ${i} [ ${regexStr} ]`
+								)
 								const regexp = new RegExp(regexStr)
 								const word = shuffle(WORDLIST).find((str) =>
 									regexp.test(str)
