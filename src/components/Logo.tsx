@@ -17,7 +17,11 @@ const useStyles = createStyles((theme) => {
 		logoGridWrapper: {
 			width: 225,
 			display: "flex",
+			[`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+				display: "none",
+			},
 		},
+
 		logoWrapper: {
 			width: 300,
 			display: "flex",
