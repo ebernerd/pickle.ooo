@@ -1,5 +1,5 @@
 import { Button, createStyles, Grid, Header } from "@mantine/core"
-import { Logo } from "./Logo"
+import { Logo } from "./logo/Logo"
 import { FiGithub } from "react-icons/fi"
 
 export const PAGE_HEADER_HEIGHT = 75
@@ -17,7 +17,14 @@ export const PageHeader = () => {
 	return (
 		<Header height={PAGE_HEADER_HEIGHT} padding="xs">
 			<Grid style={{ height: "100%" }}>
-				<Grid.Col span={4}>
+				<Grid.Col
+					span={4}
+					sx={{
+						display: "flex",
+						flexDirection: "column",
+						justifyContent: "center",
+					}}
+				>
 					<Logo />
 				</Grid.Col>
 				<Grid.Col span={4} offset={4}>
