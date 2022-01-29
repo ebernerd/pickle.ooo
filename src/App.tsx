@@ -59,7 +59,7 @@ const App: FunctionComponent = () => {
 
 			<Button
 				leftIcon={<FiHelpCircle />}
-				color="green"
+				color="dark"
 				mt={theme.spacing.md * 2}
 				onClick={() => setIsHelpModalOpen(true)}
 			>
